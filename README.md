@@ -57,6 +57,7 @@ git clone
 cd Kono-Banking-Next.js
 npm install --legacy-peer-deps
 npm run dev
+```
 
 ---
 
