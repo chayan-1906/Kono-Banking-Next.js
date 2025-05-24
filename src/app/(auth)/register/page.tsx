@@ -10,6 +10,10 @@ import Image from "next/image";
 import CustomAuthButton from "@/components/reusable/CustomAuthButton";
 import routes from "@/lib/routes";
 import CustomLink from "@/components/reusable/CustomLink";
+import {storeItemInLocalStorage} from "@/lib/utils";
+import {localStorageKeys} from "@/lib/constants";
+import {useMainContext} from "@/context/MainContext";
+import {useRouter} from "next/navigation";
 
 function RegisterPage() {
     const initialValues = {
@@ -20,6 +24,8 @@ function RegisterPage() {
     };
     type FormValues = typeof initialValues;
     const [isLoading, setIsLoading] = useState(false);
+    const {fetchUserProfile} = useMainContext();
+    const router = useRouter();
 
     const validationSchema = yup.object({
         name: yup.string().required('Name is required'),
@@ -33,9 +39,12 @@ function RegisterPage() {
             const response = await axiosClient.post(apis.registerApiUrl(), values);
             const responseData = await response.data;
             console.log('responseData:', responseData);
+            storeItemInLocalStorage(localStorageKeys.token, responseData.token);
+            fetchUserProfile();
 
             toast.success(responseData.message);
             helpers.resetForm();
+            router.replace(routes.homePath);
         } catch (error: any) {
             console.error('Error in login onSubmitHandler:', error);
             toast.error(error.response?.data?.error?.message || error.message);
