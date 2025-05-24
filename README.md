@@ -86,3 +86,15 @@ Your app is ready to be deployed!
 
 ### React Icons - https://www.npmjs.com/package/react-icons
     npm i react-icons
+
+### Axios - https://www.npmjs.com/package/axios
+    npm i axios
+
+### Formik - https://www.npmjs.com/package/formik
+    npm i formik
+
+### Yup - https://www.npmjs.com/package/yup
+    npm i yup
+
+### React Toastify - https://www.npmjs.com/package/react-toastify
+    npm i react-toastify
