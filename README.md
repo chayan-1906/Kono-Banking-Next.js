@@ -53,7 +53,7 @@ Buttons, modals, inputs, toast messages, and layout components structured for sc
 ## 📦 Installation
 
 ```bash
-git clone
+git clone https://github.com/chayan-1906/Kono-Banking-Next.js.git
 cd Kono-Banking-Next.js
 npm install --legacy-peer-deps
 npm run dev
