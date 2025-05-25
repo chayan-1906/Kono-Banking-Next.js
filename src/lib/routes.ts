@@ -5,6 +5,7 @@ const routes = {
     servicesPath: '/services',
     aboutPath: '/about',
     contactPath: '/contact',
+    profilePath: '/profile',
 };
 
 export default routes;

@@ -98,3 +98,6 @@ Your app is ready to be deployed!
 
 ### React Toastify - https://www.npmjs.com/package/react-toastify
     npm i react-toastify
+
+### React Pro Sidebar - https://www.npmjs.com/package/react-pro-sidebar
+    npm i react-pro-sidebar

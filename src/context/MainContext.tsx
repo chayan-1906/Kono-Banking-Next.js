@@ -13,6 +13,9 @@ const MainContext = createContext({
     user: null, fetchUserProfile() {
     }, onLogout() {
     },
+    isLoading: false,
+    setIsLoading: (_value: boolean) => {
+    },
 });
 
 export const useMainContext = () => {
@@ -25,14 +28,17 @@ export const MainContextProvider = ({children}: { children: ReactNode }) => {
     const router = useRouter();
 
     const fetchUserProfile = async () => {
+        console.log('fetchUserProfile called');
         try {
             const response = await axiosClient.get(apis.profileUserApiUrl(), {
                 headers: constructApiHeader(),
             });
             const responseData = response.data;
-            setUser(responseData);
+            console.log('responseData:', responseData.user);
+            setUser(responseData.user);
+            setIsLoading(false);
         } catch (error: any) {
-            toast.error(error.response.data.message || error.message);
+            toast.error(error.response?.data?.message || error.message);
         } finally {
             setIsLoading(false);
         }
@@ -59,7 +65,7 @@ export const MainContextProvider = ({children}: { children: ReactNode }) => {
     }
 
     return (
-        <MainContext.Provider value={{user, fetchUserProfile, onLogout}}>
+        <MainContext.Provider value={{user, fetchUserProfile, onLogout, isLoading, setIsLoading}}>
             {children}
         </MainContext.Provider>
     );
