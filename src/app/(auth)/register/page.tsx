@@ -90,7 +90,9 @@ function RegisterPage() {
 
                             <div className={'flex justify-end gap-1'}>
                                 <span>Already have an account?</span>
-                                <CustomLink href={routes.loginPath} text={'Login'} className={'text-rose-600'}/>
+                                <CustomLink href={routes.loginPath} className={'text-rose-600'}>
+                                    <p>Login</p>
+                                </CustomLink>
                             </div>
                         </Form>
                     </Formik>

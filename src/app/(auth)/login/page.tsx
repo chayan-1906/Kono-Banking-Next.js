@@ -13,7 +13,7 @@ import routes from "@/lib/routes";
 import {storeItemInLocalStorage} from "@/lib/utils";
 import {localStorageKeys} from "@/lib/constants";
 import {useMainContext} from "@/context/MainContext";
-import {useRouter} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 
 function LoginPage() {
     const initialValues = {
@@ -22,7 +22,7 @@ function LoginPage() {
     };
     type FormValues = typeof initialValues;
     const [isLoading, setIsLoading] = useState(false);
-    const {fetchUserProfile} = useMainContext();
+    const {fetchUserProfile, user} = useMainContext();
     const router = useRouter();
 
     const validationSchema = yup.object({
@@ -47,6 +47,11 @@ function LoginPage() {
         } finally {
             setIsLoading(false);
         }
+    }
+
+    if (user) {
+        // router.replace(routes.homePath);
+        redirect(routes.homePath);
     }
 
     return (
@@ -77,7 +82,9 @@ function LoginPage() {
 
                             <div className={'flex justify-end gap-1'}>
                                 <span>Don't have an account?</span>
-                                <CustomLink href={routes.registerPath} text={'Register'} className={'text-rose-600'}/>
+                                <CustomLink href={routes.registerPath} className={'text-rose-600'}>
+                                    <p>Register</p>
+                                </CustomLink>
                             </div>
                         </Form>
                     </Formik>

@@ -25,22 +25,22 @@ function Navbar() {
                 </div>
                 <ul className={'flex items-center justify-center gap-6'}>
                     <li>
-                        <CustomLink href={routes.homePath} text={'Home'}/>
+                        <CustomLink href={routes.homePath}>Home</CustomLink>
                     </li>
                     <li>
-                        <CustomLink href={routes.servicesPath} text={'Services'}/>
+                        <CustomLink href={routes.servicesPath}>Services</CustomLink>
                     </li>
                     <li>
-                        <CustomLink href={routes.aboutPath} text={'About'}/>
+                        <CustomLink href={routes.aboutPath}>About</CustomLink>
                     </li>
                     <li>
-                        <CustomLink href={routes.contactPath} text={'Contact'}/>
+                        <CustomLink href={routes.contactPath}>Contact</CustomLink>
                     </li>
                     <li className={cn(user ? 'block' : 'hidden')}>
                         <button className={'px-3 py-1 rounded-md cursor-pointer bg-rose-700 font-semibold text-white'} onClick={onLogout}>Logout</button>
                     </li>
                     <li className={cn(user ? 'hidden' : 'block')}>
-                        <CustomLink href={routes.loginPath} text={'Login'}/>
+                        <CustomLink href={routes.loginPath}>Login</CustomLink>
                     </li>
                 </ul>
             </nav>

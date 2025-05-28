@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface CustomAuthButtonProps {
     isLoading: boolean;
     type?: 'submit' | 'reset' | 'button';
@@ -7,6 +9,15 @@ export interface CustomAuthButtonProps {
 
 export interface CustomLinkProps {
     href: string;
-    text: string;
+    children: React.ReactNode;
     className?: string;
+}
+
+export interface DashboardProps {
+    data: {
+        title: string;
+        icon: React.ReactElement;
+        value: string;
+        link: string;
+    };
 }

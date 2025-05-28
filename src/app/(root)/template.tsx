@@ -12,6 +12,7 @@ import Link from "next/link";
 import {UrlObject} from "node:url";
 import {MdDashboard} from "react-icons/md";
 import {GiFalloutShelter} from "react-icons/gi";
+import {GrCurrency} from "react-icons/gr";
 
 function RootTemplate({children}: { children: React.ReactNode }) {
     const {user, isLoading} = useMainContext();
@@ -38,8 +39,11 @@ function RootTemplate({children}: { children: React.ReactNode }) {
     }
 
     const CustomMenu = ({link, text, Icon}: { link: string | UrlObject; text: string; Icon: React.ElementType }) => {
+        const isActive = pathName === link;
         return (
-            <MenuItem component={<Link href={link}/>} style={{background: pathName === link ? '#C60036' : '#FFF', color: pathName === link ? 'white' : 'black'}} icon={<Icon/>}>{text}</MenuItem>
+            <MenuItem component={<Link href={link}/>} style={{background: isActive ? '#C60036' : '#FFF', color: isActive ? 'white' : 'black', fontWeight: isActive ? 'bold' : 'normal'}} icon={<Icon/>}>
+                {text}
+            </MenuItem>
         );
     }
 
@@ -49,6 +53,7 @@ function RootTemplate({children}: { children: React.ReactNode }) {
                 <Sidebar breakPoint={'lg'} toggled={isToggle} onBackdropClick={() => dispatch(setIsToggle(false))}>
                     <Menu className={'bg-white min-h-screen lg:min-h-[90vh]'}>
                         <CustomMenu link={routes.homePath} text={'Home'} Icon={MdDashboard}/>
+                        <CustomMenu link={routes.amountPath} text={'Amount'} Icon={GrCurrency}/>
                         <CustomMenu link={routes.profilePath} text={'Profile'} Icon={GiFalloutShelter}/>
                     </Menu>
                 </Sidebar>

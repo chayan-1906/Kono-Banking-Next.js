@@ -6,6 +6,9 @@ const routes = {
     aboutPath: '/about',
     contactPath: '/contact',
     profilePath: '/profile',
+    amountPath: '/amount',
+    fdAmountPath: '/fd-amount',
+    atmCardsPath: '/atm-cards',
 };
 
 export default routes;
