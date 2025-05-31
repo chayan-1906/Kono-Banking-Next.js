@@ -1,5 +1,6 @@
 import HeaderName from "@/components/HeaderName";
 import {CiSquarePlus} from "react-icons/ci";
+import AddAmountModal from "@/components/amount/AddAmountModal";
 
 function AmountPage() {
 	return (
@@ -10,9 +11,8 @@ function AmountPage() {
 					<h1 className={'text-2xl font-bold'}>Add Amount</h1>
 					<p>Total Amount: 150/-</p>
 				</div>
-				<button className={'text-3xl text-rose-700'}>
-					<CiSquarePlus/>
-				</button>
+
+				<AddAmountModal/>
 			</div>
 		</div>
 	);
